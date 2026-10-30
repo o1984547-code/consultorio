@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Consultório Odontológico</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Nunito:wght@400;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js"></script>
+<style>
+:root{--p:#F8C8DC;--p2:#FDE8EF;--a:#E88EAD;--t:#5A4A52;--w:#fff;--mint:#D5F2E3;--gold:#D4AF6A;--sh:0 6px 20px rgba(232,142,173,.18);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{color-scheme:light}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;background:var(--p2);color:var(--t);display:flex;min-height:100vh}
+h1,h2,h3,.logo b{font-family:Quicksand,Nunito,sans-serif;margin:0}
+aside{width:230px;background:var(--w);padding:18px 12px;position:sticky;top:0;height:100vh;box-shadow:var(--sh);display:flex;flex-direction:column;gap:6px}
+.logo{display:flex;gap:8px;align-items:center;padding:6px 8px 14px}.logo svg{width:34px;height:34px;color:var(--a)}.logo b{font-size:15px;line-height:1.1}
+nav button{all:unset;cursor:pointer;display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:16px;width:100%;box-sizing:border-box;transition:.2s;font-weight:600}
+nav button:hover{background:var(--p2)}nav button.on{background:var(--p);color:var(--t)}
+nav button svg{width:19px;height:19px}
+main{flex:1;padding:24px;max-width:1100px;margin:0 auto;width:100%;animation:in .3s}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.card{background:var(--w);border-radius:22px;padding:18px;box-shadow:var(--sh);margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:16px}
+.stat{background:var(--w);border-radius:20px;padding:16px;box-shadow:var(--sh)}.stat small{opacity:.7}.stat b{display:block;font-size:22px;font-family:Quicksand;color:var(--a);margin-top:4px}
+.btn{background:var(--a);color:#fff;border:0;border-radius:16px;padding:9px 16px;font:700 14px Nunito;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--sh)}.btn.g{background:var(--p);color:var(--t)}.btn.s{padding:5px 10px;font-size:12px;border-radius:12px}
+input,select,textarea{width:100%;padding:10px 12px;border:1.5px solid var(--p);border-radius:14px;font:inherit;color:var(--t);background:#fff}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--a)}
+label{display:block;font-size:13px;font-weight:700;margin:10px 0 4px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.item{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:10px 14px;border-radius:16px;margin-bottom:8px;border:1.5px solid transparent}
+.s-pendente{background:#FFF3C4}.s-confirmado{background:var(--mint)}.s-concluido{background:var(--p);border-color:var(--a)}.s-faltou{background:#E5E1E3}.s-cancelado{background:#F9D3D3}
+.chip{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:#fff9}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--p2)}th{font-family:Quicksand}
+.tbl{overflow-x:auto}.empty{text-align:center;padding:30px;opacity:.8}.empty svg{width:48px;height:48px;color:var(--a)}
+.warn{background:#F9D3D3}.low td{color:#b3405f;font-weight:700}
+#md{position:fixed;inset:0;background:#5a4a5266;display:none;align-items:center;justify-content:center;padding:14px;z-index:9}
+#md>div{background:#fff;border-radius:24px;padding:22px;max-width:480px;width:100%;max-height:90vh;overflow:auto}
+.teeth{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin:8px 0}.teeth button{border:1.5px solid var(--p);background:#fff;border-radius:12px;padding:8px 0;cursor:pointer;font:700 12px Nunito;color:var(--t)}.teeth button.has{background:var(--a);color:#fff}
+.bars{display:flex;gap:8px;align-items:flex-end;height:120px}.bars div{flex:1;text-align:center;font-size:11px}.bars i{display:block;background:var(--a);border-radius:10px 10px 0 0;min-height:3px}.bars i.e{background:var(--gold)}
+#bn{display:none}
+@media(max-width:800px){aside{display:none}main{padding:14px 12px 90px}
+#bn{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;box-shadow:0 -4px 16px #e88ead33;justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));z-index:5}
+#bn button{all:unset;padding:8px 9px;border-radius:14px;cursor:pointer}#bn button.on{background:var(--p)}#bn svg{width:22px;height:22px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<aside><div class="logo" id="lg"></div><nav id="nv"></nav></aside>
+<main id="app"></main><div id="bn"></div><div id="md"><div id="mc"></div></div>
+<script>
+/* ===== Dados e utilitários ===== */
+const $=s=>document.querySelector(s),K='odonto-v1';
+const brl=v=>(+v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const iso=d=>{d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const br=i=>i?i.split('-').reverse().join('/'):'';
+const addD=(i,n)=>{const d=new Date(i+'T12:00');d.setDate(d.getDate()+n);return iso(d)};
+const mm=t=>{const[h,m]=t.split(':');return +h*60+ +m};
+const uid=()=>Math.random().toString(36).slice(2,9);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const T=iso();
+function seed(){const p=[['Ana Beatriz Lima','21999990001'],['Camila Souza','21999990002'],['Rafael Duarte','21999990003'],['Juliana Prado','21999990004']].map((x,i)=>({id:'p'+i,nome:x[0],tel:x[1],email:'',nasc:i==1?T.slice(0,4)-28+T.slice(4):'1990-05-12',cpf:'',end:'',conv:i?'Particular':'OdontoPlus',alerg:i==0?'Penicilina':'',med:'',obs:''}));
+const pr=[['Limpeza','Prevenção',40,180,120],['Restauração','Dentística',60,250,150],['Tratamento de canal','Endodontia',90,900,600],['Clareamento','Estética',60,800,800],['Extração','Cirurgia',45,300,200],['Aplicação de flúor','Prevenção',20,80,50],['Manutenção ortodôntica','Ortodontia',30,150,100]].map((x,i)=>({id:'r'+i,nome:x[0],cat:x[1],dur:x[2],val:x[3],conv:x[4],ativo:true}));
+const ag=[['p0','r0','09:00','confirmado'],['p1','r1','10:00','pendente'],['p2','r6','11:30','confirmado'],['p3','r3','14:00','pendente']].map((x,i)=>({id:'a'+i,pac:x[0],proc:x[1],data:T,hora:x[2],dur:pr.find(q=>q.id==x[1]).dur,dent:'Dra. Helena',obs:'',st:x[3]}));
+const pg=[['p0','r0',180,'Pix','pago',-1],['p1','r1',250,'Cartão','pago',-8],['p2','r2',900,'Boleto','pendente',-3],['p3','r3',800,'Pix','pago',-35]].map((x,i)=>({id:'g'+i,pac:x[0],proc:x[1],val:x[2],forma:x[3],parc:1,st:x[4],data:addD(T,x[5])}));
+return{cfg:{nome:'Sorriso Delicado',dent:'Dra. Helena',tel:'(21) 99999-0000',end:'Rua das Flores, 123',ab:'08:00',fe:'18:00',alm:'12:00-13:00',bloq:'',msg:'Olá, {nome}! 💕 Lembrando da sua consulta de {procedimento} em {data} às {hora} no {consultorio}. Confirma presença?'},
+pac:p,proc:pr,ag,pg,dp:[{id:'d0',desc:'Aluguel',val:2200,data:T,cat:'Fixa'},{id:'d1',desc:'Materiais',val:640,data:addD(T,-6),cat:'Materiais'}],es:[{id:'e0',nome:'Luvas (cx)',qtd:3,un:'cx',min:5,forn:'DentalMais'},{id:'e1',nome:'Anestésico',qtd:20,un:'tubete',min:10,forn:'DentalMais'}],od:{}}}
+let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}if(!S)S=seed();
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const pn=id=>(S.pac.find(p=>p.id==id)||{}).nome||'—',rn=id=>(S.proc.find(p=>p.id==id)||{}).nome||'—';
+let tab='home',aDate=T,aView='dia',q='';
+/* ===== Modal e formulários genéricos ===== */
+const modal=h=>{$('#mc').innerHTML=h;$('#md').style.display='flex';lucide.createIcons()},close=()=>$('#md').style.display='none';
+$('#md').onclick=e=>{if(e.target.id=='md')close()};
+function form(title,fs,ok){modal(`<h2>${title}</h2>`+fs.map(f=>`<label>${f.l}</label>`+(f.o?`<select id="f_${f.k}">${f.o.map(o=>{const[v,l]=Array.isArray(o)?o:[o,o];return`<option value="${esc(v)}" ${v==f.v?'selected':''}>${esc(l)}</option>`}).join('')}</select>`:f.t=='area'?`<textarea id="f_${f.k}" rows=3>${esc(f.v)}</textarea>`:`<input id="f_${f.k}" type="${f.t||'text'}" value="${esc(f.v)}" ${f.t=='number'?'step=any':''}>`)).join('')+`<div class="row" style="margin-top:16px"><button class="btn g" onclick="close()">Cancelar</button><button class="btn" id="sv">Salvar</button></div>`);
+$('#sv').onclick=()=>{const v={};for(const f of fs){v[f.k]=$('#f_'+f.k).value.trim();if(f.t=='number')v[f.k]=+v[f.k]||0;if(f.r&&!v[f.k])return alert('Ops! Preencha o campo "'+f.l+'" 💕')}ok(v)}}
+const del=(arr,id,fn)=>{if(confirm('Tem certeza que deseja excluir? Essa ação não pode ser desfeita.')){S[arr]=S[arr].filter(x=>x.id!=id);save();fn?fn():render()}};
+const empty=m=>`<div class="empty"><i data-lucide="heart"></i><p>${m}</p></div>`;
+/* ===== Layout ===== */
+const TABS=[['home','Início','home'],['agenda','Agendamentos','calendar-heart'],['pac','Pacientes','users'],['proc','Procedimentos','sparkles'],['fin','Financeiro','wallet'],['est','Estoque','package'],['cfg','Configurações','settings']];
+function shell(){$('#lg').innerHTML=`<svg viewBox="0 0 24 24" fill="#FDE8EF" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 3c-2.5 0-4 2-4 4.5 0 2.5 1.5 3.5 1.5 6.5 0 3 .8 6 2.2 6 1.5 0 1.3-4 3.3-4s1.8 4 3.3 4c1.4 0 2.2-3 2.2-6 0-3 1.5-4 1.5-6.5C21 5 19.500 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg><b>${esc(S.cfg.nome)}</b>`;
+const b=TABS.map(t=>`<button class="${t[0]==tab?'on':''}" onclick="go('${t[0]}')" title="${t[1]}" aria-label="${t[1]}"><i data-lucide="${t[2]}"></i>@@</button>`);
+$('#nv').innerHTML=b.map((x,i)=>x.replace('@@',TABS[i][1])).join('');$('#bn').innerHTML=b.map(x=>x.replace('@@','')).join('')}
+const go=t=>{tab=t;q='';render()};
+function render(){shell();$('#app').innerHTML=({home,agenda,pac,proc,fin,est,cfg})[tab]();lucide.createIcons();scrollTo(0,0)}
+/* ===== Início ===== */
+function home(){const hoje=S.ag.filter(a=>a.data==T).sort((a,b)=>a.hora<b.hora?-1:1),h=new Date().getHours(),sd=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite',mes=T.slice(0,7);
+const sum=f=>S.pg.filter(f).reduce((s,p)=>s+p.val,0),prox=hoje.find(a=>a.hora>=new Date().toTimeString().slice(0,5)&&!['cancelado','concluido','faltou'].includes(a.st));
+const niv=S.pac.filter(p=>p.nasc&&(d=>d>=0&&d<7)((new Date(T.slice(0,4)+p.nasc.slice(4)+'T12:00')-new Date(T+'T00:00'))/864e5));
+return`<div class="bar"><div><h1>${sd}, ${esc(S.cfg.dent)}! 💕</h1><small>${new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})}</small></div></div>
+<div class="grid"><div class="stat"><small>Atendimentos hoje</small><b>${hoje.length}</b></div><div class="stat"><small>Próximo paciente</small><b style="font-size:16px">${prox?prox.hora+' · '+esc(pn(prox.pac)):'—'}</b></div><div class="stat"><small>Faturamento do dia</small><b>${brl(sum(p=>p.st=='pago'&&p.data==T))}</b></div><div class="stat"><small>Faturamento do mês</small><b>${brl(sum(p=>p.st=='pago'&&p.data.startsWith(mes)))}</b></div><div class="stat"><small>Pagamentos pendentes</small><b>${brl(sum(p=>p.st!='pago'))}</b></div></div>
+<div class="row" style="margin-bottom:16px"><button class="btn" onclick="agForm()">+ Novo agendamento</button><button class="btn" onclick="pacForm()">+ Novo paciente</button><button class="btn" onclick="pgForm()">+ Registrar pagamento</button></div>
+<div class="card"><h3>Agenda de hoje</h3><br>${hoje.length?hoje.map(agRow).join(''):empty('Nenhum atendimento hoje. Que tal um café? ☕')}</div>
+<div class="card"><h3>Aniversariantes da semana 🎂</h3><br>${niv.length?niv.map(p=>`<div>${esc(p.nome)} · ${br(p.nasc).slice(0,5)}</div>`).join(''):'<small>Ninguém nesta semana.</small>'}</div>`}
+/* ===== Agenda ===== */
+const STL={pendente:'Pendente',confirmado:'Confirmado',concluido:'Concluído',faltou:'Faltou',cancelado:'Cancelado'};
+function agRow(a){return`<div class="item s-${a.st}"><div><b>${a.hora}</b> · ${esc(pn(a.pac))}<br><small>${esc(rn(a.proc))} · ${a.dur}min · ${esc(a.dent)}</small></div><div class="row" style="flex:none;gap:5px"><span class="chip">${STL[a.st]}</span>
+<button class="btn s g" title="Confirmar" onclick="setSt('${a.id}','confirmado')">✔</button><button class="btn s g" title="Concluir" onclick="setSt('${a.id}','concluido')">🦷</button><button class="btn s g" title="Faltou" onclick="setSt('${a.id}','faltou')">✖</button><button class="btn s g" title="Cancelar" onclick="setSt('${a.id}','cancelado')">🚫</button><button class="btn s" onclick="wpp('${a.id}')">WhatsApp</button><button class="btn s g" onclick="agForm('${a.id}')">Editar</button><button class="btn s g" onclick="del('ag','${a.id}')">🗑</button></div></div>`}
+const setSt=(id,st)=>{S.ag.find(a=>a.id==id).st=st;save();render()};
+function agenda(){const days=aView=='dia'?[aDate]:[0,1,2,3,4,5,6].map(i=>addD(aDate,i));
+return`<div class="bar"><h1>Agendamentos</h1><button class="btn" onclick="agForm()">+ Novo</button></div><div class="card"><div class="row"><button class="btn g" onclick="aDate=addD(aDate,aView=='dia'?-1:-7);render()">‹</button><input type="date" value="${aDate}" onchange="aDate=this.value||T;render()"><select onchange="aView=this.value;render()"><option value="dia" ${aView=='dia'?'selected':''}>Dia</option><option value="semana" ${aView=='semana'?'selected':''}>Semana</option></select><button class="btn g" onclick="aDate=addD(aDate,aView=='dia'?1:7);render()">›</button></div></div>`+
+days.map(d=>{const l=S.ag.filter(a=>a.data==d).sort((a,b)=>a.hora<b.hora?-1:1);return`<div class="card"><h3>${new Date(d+'T12:00').toLocaleDateString('pt-BR',{weekday:'long'})}, ${br(d)}</h3><br>${l.length?l.map(agRow).join(''):'<small>Livre 🌸</small>'}</div>`}).join('')}
+function agForm(id){const a=S.ag.find(x=>x.id==id)||{data:aDate,hora:'09:00',dur:30,dent:S.cfg.dent,st:'pendente',obs:''};
+form(id?'Editar agendamento':'Novo agendamento',[{k:'pac',l:'Paciente',o:S.pac.map(p=>[p.id,p.nome]),v:a.pac},{k:'proc',l:'Procedimento',o:S.proc.filter(p=>p.ativo).map(p=>[p.id,p.nome]),v:a.proc},{k:'data',l:'Data',t:'date',v:a.data,r:1},{k:'hora',l:'Hora',t:'time',v:a.hora,r:1},{k:'dur',l:'Duração (min)',t:'number',v:a.dur},{k:'dent',l:'Dentista',v:a.dent},{k:'obs',l:'Observações',t:'area',v:a.obs}],v=>{
+if(!id&&!v.dur)v.dur=S.proc.find(p=>p.id==v.proc).dur;
+if(S.cfg.bloq.split(',').map(s=>s.trim()).includes(v.data)&&!confirm('Data bloqueada (folga/feriado). Agendar mesmo assim?'))return;
+const c=S.ag.find(o=>o.id!=id&&o.data==v.data&&o.dent==v.dent&&!['cancelado','faltou'].includes(o.st)&&mm(v.hora)<mm(o.hora)+o.dur&&mm(o.hora)<mm(v.hora)+v.dur);
+if(c)return alert('⚠️ Conflito de horário com '+pn(c.pac)+' às '+c.hora+'. Escolha outro horário.');
+if(id)Object.assign(a,v);else S.ag.push({id:uid(),st:'pendente',...v});aDate=v.data;save();close();render()})}
+function wpp(id){const a=S.ag.find(x=>x.id==id),p=S.pac.find(x=>x.id==a.pac);
+const m=S.cfg.msg.replace('{nome}',p.nome.split(' ')[0]).replace('{data}',br(a.data)).replace('{hora}',a.hora).replace('{procedimento}',rn(a.proc)).replace('{consultorio}',S.cfg.nome);
+form('Lembrete no WhatsApp',[{k:'m',l:'Mensagem (editável)',t:'area',v:m}],v=>{open('https://wa.me/55'+p.tel.replace(/\D/g,'')+'?text='+encodeURIComponent(v.m),'_blank');close()})}
+/* ===== Pacientes ===== */
+function pac(){const l=S.pac.filter(p=>(p.nome+p.tel).toLowerCase().includes(q.toLowerCase()));
+return`<div class="bar"><h1>Pacientes</h1><button class="btn" onclick="pacForm()">+ Novo paciente</button></div><input placeholder="🔍 Buscar por nome ou telefone" value="${esc(q)}" oninput="q=this.value;render();this.focus()" style="margin-bottom:14px">`+(l.length?l.map(p=>`<div class="card"><div class="bar" style="margin:0"><div><b>${esc(p.nome)}</b><br><small>${esc(p.tel)} · ${esc(p.conv)}</small></div><div class="row" style="flex:none"><button class="btn s" onclick="ficha('${p.id}')">Ficha</button><button class="btn s g" onclick="pacForm('${p.id}')">Editar</button><button class="btn s g" onclick="del('pac','${p.id}')">🗑</button></div></div></div>`).join(''):empty('Nenhum paciente encontrado.'))}
+function pacForm(id){const p=S.pac.find(x=>x.id==id)||{};const F=[['nome','Nome',,1],['tel','Telefone',,1],['email','E-mail'],['nasc','Nascimento','date'],['cpf','CPF'],['end','Endereço'],['conv','Convênio'],['alerg','Alergias'],['med','Medicamentos em uso'],['obs','Observações','area']];
+form(id?'Editar paciente':'Novo paciente',F.map(f=>({k:f[0],l:f[1],t:f[2],r:f[3],v:p[f[0]]||''})),v=>{if(id)Object.assign(p,v);else S.pac.push({id:uid(),...v});save();close();render()})}
+function ficha(id){const p=S.pac.find(x=>x.id==id),od=S.od[id]||{};const T8=[...'1817161514131211'.match(/../g),...'2122232425262728'.match(/../g),...'4847464544434241'.match(/../g),...'3132333435363738'.match(/../g)];
+modal(`<h2>${esc(p.nome)}</h2><small>${esc(p.tel)} · ${esc(p.email)} · ${br(p.nasc)} · CPF ${esc(p.cpf)}<br>${esc(p.end)}<br>Convênio: ${esc(p.conv)}<br>⚠️ Alergias: ${esc(p.alerg||'nenhuma')} · Medicamentos: ${esc(p.med||'—')}<br>${esc(p.obs)}</small>
+<h3 style="margin-top:14px">Odontograma</h3><div class="teeth">${T8.map(t=>`<button class="${od[t]?'has':''}" title="${esc(od[t]||'')}" onclick="tooth('${id}','${t}')">${t}</button>`).join('')}</div>
+<h3>Atendimentos</h3>${S.ag.filter(a=>a.pac==id).map(a=>`<div>${br(a.data)} · ${esc(rn(a.proc))} · ${STL[a.st]}</div>`).join('')||'<small>Sem histórico.</small>'}
+<h3 style="margin-top:10px">Pagamentos</h3>${S.pg.filter(g=>g.pac==id).map(g=>`<div>${br(g.data)} · ${brl(g.val)} · ${g.st}</div>`).join('')||'<small>Sem pagamentos.</small>'}
+<div class="row" style="margin-top:14px"><button class="btn g" onclick="close()">Fechar</button></div>`)}
+function tooth(id,t){const o=S.od[id]=S.od[id]||{};form('Dente '+t,[{k:'n',l:'Procedimento / observação (vazio limpa)',v:o[t]||''}],v=>{v.n?o[t]=v.n:delete o[t];save();ficha(id)})}
+/* ===== Procedimentos ===== */
+const CATS=['Prevenção','Dentística','Endodontia','Ortodontia','Estética','Cirurgia','Prótese','Outros'];
+function proc(){const l=S.proc.filter(p=>p.nome.toLowerCase().includes(q.toLowerCase()));
+return`<div class="bar"><h1>Procedimentos e preços</h1><div class="row" style="flex:none"><button class="btn g" onclick="reaj()">% Reajuste</button><button class="btn" onclick="prForm()">+ Novo</button></div></div><input placeholder="🔍 Buscar procedimento" value="${esc(q)}" oninput="q=this.value;render();this.focus()" style="margin-bottom:14px"><div class="card tbl"><table><tr><th>Nome</th><th>Categoria</th><th>Min</th><th>Particular</th><th>Convênio</th><th></th></tr>${l.map(p=>`<tr style="opacity:${p.ativo?1:.45}"><td>${esc(p.nome)}</td><td>${p.cat}</td><td>${p.dur}</td><td>${brl(p.val)}</td><td>${brl(p.conv)}</td><td><button class="btn s g" onclick="prForm('${p.id}')">Editar</button> <button class="btn s g" onclick="tg('${p.id}')">${p.ativo?'Desativar':'Ativar'}</button></td></tr>`).join('')}</table></div>`}
+const tg=id=>{const p=S.proc.find(x=>x.id==id);p.ativo=!p.ativo;save();render()};
+function prForm(id){const p=S.proc.find(x=>x.id==id)||{cat:'Prevenção',dur:30,val:0,conv:0,nome:''};form(id?'Editar':'Novo procedimento',[{k:'nome',l:'Nome',v:p.nome,r:1},{k:'cat',l:'Categoria',o:CATS,v:p.cat},{k:'dur',l:'Duração (min)',t:'number',v:p.dur},{k:'val',l:'Valor particular (R$)',t:'number',v:p.val},{k:'conv',l:'Valor convênio (R$)',t:'number',v:p.conv}],v=>{if(id)Object.assign(p,v);else S.proc.push({id:uid(),ativo:true,...v});save();close();render()})}
+function reaj(){form('Reajuste percentual',[{k:'c',l:'Categoria',o:['Todas',...CATS],v:'Todas'},{k:'x',l:'Percentual (%)',t:'number',v:5}],v=>{S.proc.filter(p=>v.c=='Todas'||p.cat==v.c).forEach(p=>{p.val=Math.round(p.val*(1+v.x/100)*100)/100;p.conv=Math.round(p.conv*(1+v.x/100)*100)/100});save();close();render()})}
+/* ===== Financeiro ===== */
+let f0=T.slice(0,8)+'01',f1=T;
+function fin(){const inP=d=>d>=f0&&d<=f1,pg=S.pg.filter(p=>inP(p.data)),dp=S.dp.filter(d=>inP(d.data)),rec=pg.filter(p=>p.st=='pago').reduce((s,p)=>s+p.val,0),des=dp.reduce((s,d)=>s+d.val,0);
+const ms=[...Array(6)].map((_,i)=>{const d=new Date();d.setMonth(d.getMonth()-5+i,1);return iso(d).slice(0,7)}),rm=ms.map(m=>S.pg.filter(p=>p.st=='pago'&&p.data.startsWith(m)).reduce((s,p)=>s+p.val,0)),dm=ms.map(m=>S.dp.filter(p=>p.data.startsWith(m)).reduce((s,p)=>s+p.val,0)),mx=Math.max(1,...rm,...dm);
+const cnt={};S.ag.filter(a=>a.st=='concluido').forEach(a=>cnt[rn(a.proc)]=(cnt[rn(a.proc)]||0)+1);
+return`<div class="bar"><h1>Financeiro</h1><div class="row" style="flex:none"><button class="btn" onclick="pgForm()">+ Pagamento</button><button class="btn g" onclick="dpForm()">+ Despesa</button><button class="btn g" onclick="csv()">CSV</button></div></div>
+<div class="card row"><div><label>De</label><input type="date" value="${f0}" onchange="f0=this.value;render()"></div><div><label>Até</label><input type="date" value="${f1}" onchange="f1=this.value;render()"></div></div>
+<div class="grid"><div class="stat"><small>Receitas</small><b>${brl(rec)}</b></div><div class="stat"><small>Despesas</small><b>${brl(des)}</b></div><div class="stat"><small>Saldo</small><b>${brl(rec-des)}</b></div></div>
+<div class="card"><h3>Receitas × despesas (6 meses)</h3><small>rosa = receitas · dourado = despesas</small><br><br><div class="bars">${ms.map((m,i)=>`<div><i style="height:${rm[i]/mx*90}px"></i><i class="e" style="height:${dm[i]/mx*90}px"></i>${m.slice(5)}/${m.slice(2,4)}</div>`).join('')}</div></div>
+<div class="card"><h3>Procedimentos mais realizados</h3>${Object.entries(cnt).sort((a,b)=>b[1]-a[1]).map(e=>`<div>${esc(e[0])}: <b>${e[1]}</b></div>`).join('')||'<small>Conclua atendimentos para ver o ranking.</small>'}</div>
+<div class="card tbl"><h3>Pagamentos</h3><table>${pg.map(p=>`<tr><td>${br(p.data)}</td><td>${esc(pn(p.pac))}</td><td>${esc(rn(p.proc))}</td><td>${brl(p.val)}</td><td>${p.forma} ${p.parc}x</td><td>${p.st}</td><td><button class="btn s g" onclick="del('pg','${p.id}')">🗑</button></td></tr>`).join('')||`<tr><td>${empty('Sem pagamentos no período.')}</td></tr>`}</table></div>
+<div class="card tbl"><h3>Despesas</h3><table>${dp.map(d=>`<tr><td>${br(d.data)}</td><td>${esc(d.desc)}</td><td>${d.cat}</td><td>${brl(d.val)}</td><td><button class="btn s g" onclick="del('dp','${d.id}')">🗑</button></td></tr>`).join('')||`<tr><td><small>Sem despesas.</small></td></tr>`}</table></div>`}
+function pgForm(){form('Registrar pagamento',[{k:'pac',l:'Paciente',o:S.pac.map(p=>[p.id,p.nome])},{k:'proc',l:'Procedimento',o:S.proc.map(p=>[p.id,p.nome])},{k:'val',l:'Valor (R$)',t:'number',r:1},{k:'forma',l:'Forma',o:['Pix','Cartão','Dinheiro','Boleto'],v:'Pix'},{k:'parc',l:'Parcelas',t:'number',v:1},{k:'st',l:'Status',o:['pago','pendente','atrasado'],v:'pago'},{k:'data',l:'Data',t:'date',v:T}],v=>{S.pg.push({id:uid(),...v});save();close();render()})}
+function dpForm(){form('Nova despesa',[{k:'desc',l:'Descrição',r:1},{k:'cat',l:'Categoria',o:['Fixa','Materiais','Laboratório','Outros']},{k:'val',l:'Valor (R$)',t:'number',r:1},{k:'data',l:'Data',t:'date',v:T}],v=>{S.dp.push({id:uid(),...v});save();close();render()})}
+function csv(){const r=[['Data','Paciente','Procedimento','Valor','Forma','Status'],...S.pg.filter(p=>p.data>=f0&&p.data<=f1).map(p=>[br(p.data),pn(p.pac),rn(p.proc),p.val,p.forma,p.st])];
+const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(r.map(x=>x.map(c=>'"'+c+'"').join(';')).join('\n'));a.download='financeiro.csv';a.click()}
+/* ===== Estoque ===== */
+function est(){return`<div class="bar"><h1>Estoque</h1><button class="btn" onclick="esForm()">+ Material</button></div><div class="card tbl">${S.es.length?`<table><tr><th>Material</th><th>Qtd</th><th>Mín</th><th>Fornecedor</th><th></th></tr>${S.es.map(e=>`<tr class="${e.qtd<e.min?'low':''}"><td>${e.qtd<e.min?'⚠️ ':''}${esc(e.nome)}</td><td>${e.qtd} ${esc(e.un)}</td><td>${e.min}</td><td>${esc(e.forn)}</td><td><button class="btn s g" onclick="esForm('${e.id}')">Editar</button> <button class="btn s g" onclick="del('es','${e.id}')">🗑</button></td></tr>`).join('')}</table>`:empty('Estoque vazio.')}</div>`}
+function esForm(id){const e=S.es.find(x=>x.id==id)||{nome:'',qtd:0,un:'un',min:1,forn:''};form(id?'Editar material':'Novo material',[{k:'nome',l:'Nome',v:e.nome,r:1},{k:'qtd',l:'Quantidade',t:'number',v:e.qtd},{k:'un',l:'Unidade',v:e.un},{k:'min',l:'Quantidade mínima',t:'number',v:e.min},{k:'forn',l:'Fornecedor',v:e.forn}],v=>{if(id)Object.assign(e,v);else S.es.push({id:uid(),...v});save();close();render()})}
+/* ===== Configurações ===== */
+function cfg(){const c=S.cfg,F=[['nome','Nome do consultório'],['dent','Dentista(s)'],['tel','Telefone'],['end','Endereço'],['ab','Abre às','time'],['fe','Fecha às','time'],['alm','Intervalo de almoço'],['bloq','Datas bloqueadas (aaaa-mm-dd, separadas por vírgula)'],['msg','Mensagem do lembrete ({nome} {data} {hora} {procedimento} {consultorio})','area']];
+return`<h1>Configurações</h1><br><div class="card">${F.map(f=>`<label>${f[1]}</label>${f[2]=='area'?`<textarea id="c_${f[0]}" rows=3>${esc(c[f[0]])}</textarea>`:`<input id="c_${f[0]}" type="${f[2]||'text'}" value="${esc(c[f[0]])}">`}`).join('')}<br><button class="btn" onclick="F=['nome','dent','tel','end','ab','fe','alm','bloq','msg'];F.forEach(k=>S.cfg[k]=$('#c_'+k).value);save();render();alert('Salvo! 💕')">Salvar</button></div>
+<div class="card"><h3>Backup</h3><br><div class="row"><button class="btn g" onclick="bk()">Exportar JSON</button><input type="file" accept=".json" onchange="imp(this.files[0])"></div></div>`}
+function bk(){const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(S));a.download='backup-consultorio.json';a.click()}
+function imp(f){if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.pac||!d.cfg)throw 0;if(confirm('Substituir todos os dados atuais pelo backup?')){S=d;save();render()}}catch(e){alert('Arquivo de backup inválido.')}};r.readAsText(f)}
+render();
+</script></body></html>
